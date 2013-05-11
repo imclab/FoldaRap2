@@ -75,10 +75,10 @@
 // 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan) (1k pullup)
 
-//#define TEMP_SENSOR_0 0
+#define TEMP_SENSOR_0 0
 //#define TEMP_SENSOR_1 0
 //#define TEMP_SENSOR_2 0
-//#define TEMP_SENSOR_BED 0
+#define TEMP_SENSOR_BED 0
 
 // Actual temperature must be close to target for this long before M109 returns success
 #define TEMP_RESIDENCY_TIME 10	// (seconds)
@@ -88,18 +88,18 @@
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
 // to check that the wiring to the thermistor is not broken. 
 // Otherwise this would lead to the heater being powered on all the time.
-//#define HEATER_0_MINTEMP 5
+#define HEATER_0_MINTEMP 5
 //#define HEATER_1_MINTEMP 5
 //#define HEATER_2_MINTEMP 5
-//#define BED_MINTEMP 5
+#define BED_MINTEMP 5
 
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
-//#define HEATER_0_MAXTEMP 275
+#define HEATER_0_MAXTEMP 275
 //#define HEATER_1_MAXTEMP 275
 //#define HEATER_2_MAXTEMP 275
-//#define BED_MAXTEMP 150
+#define BED_MAXTEMP 150
 
 // If your bed has low resistance e.g. .6 ohm and throws the fuse you can duty cycle it to reduce the
 // average current. The value should be an integer and the heat bed will be turned on for 1 interval of
@@ -120,10 +120,10 @@
   #define PID_dT ((16.0 * 8.0)/(F_CPU / 64.0 / 256.0)) //sampling period of the temperature routine
 
 // If you are using a preconfigured hotend then you can use one of the value sets by uncommenting it
-// Ultimaker
-    #define  DEFAULT_Kp 22.2
-    #define  DEFAULT_Ki 1.08  
-    #define  DEFAULT_Kd 114  
+// RepRapPro Huxley
+  #define  DEFAULT_Kp 3.0
+  #define  DEFAULT_Ki (2*PID_dT)
+  #define  DEFAULT_Kd (80/PID_dT)
 
 // Makergear
 //    #define  DEFAULT_Kp 7.0
@@ -171,7 +171,6 @@
 
 // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
-
 
 
 //this prevents dangerous Extruder moves, i.e. if the temperature is under the limit
@@ -272,16 +271,16 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,1600,140}  // default steps per unit for ultimaker // 4000
-#define DEFAULT_MAX_FEEDRATE          {250, 250, 5, 50}    // (mm/sec)    // 5
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,4000,140}  // default steps per unit for ultimaker // 4000
+#define DEFAULT_MAX_FEEDRATE          {250, 250, 3, 50}    // (mm/sec)    // 5
 #define DEFAULT_MAX_ACCELERATION      {4500,4500,50,10200}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot. // 100
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
 #define DEFAULT_RETRACT_ACCELERATION  10200   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
-#define DEFAULT_XYJERK                20.0    // (mm/sec)
-#define DEFAULT_ZJERK                 2.0     // (mm/sec) //0.4
+#define DEFAULT_XYJERK                10.0    // (mm/sec)
+#define DEFAULT_ZJERK                 0.3     // (mm/sec) //0.4
 #define DEFAULT_EJERK                 10.0    // (mm/sec)
 
 //===========================================================================
