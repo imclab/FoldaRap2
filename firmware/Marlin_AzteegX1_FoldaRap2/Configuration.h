@@ -231,7 +231,7 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 #define INVERT_X_DIR false    // for Mendel set to false, for Orca set to true
 #define INVERT_Y_DIR false    // for Mendel set to true, for Orca set to false
-#define INVERT_Z_DIR false     // for Mendel set to false, for Orca set to true
+#define INVERT_Z_DIR true     // for Mendel set to false, for Orca set to true
 #define INVERT_E0_DIR true   // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E1_DIR true    // for direct drive extruder v9 set to true, for geared extruder set to false
 #define INVERT_E2_DIR true   // for direct drive extruder v9 set to true, for geared extruder set to false
@@ -273,13 +273,13 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,4000,140}  // default steps per unit for ultimaker // 4000
 #define DEFAULT_MAX_FEEDRATE          {250, 250, 3, 50}    // (mm/sec)    // 5
-#define DEFAULT_MAX_ACCELERATION      {4500,4500,50,10200}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot. // 100
+#define DEFAULT_MAX_ACCELERATION      {1200,1200,50,10200}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot. // 100
 
-#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
+#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
 #define DEFAULT_RETRACT_ACCELERATION  10200   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
-#define DEFAULT_XYJERK                10.0    // (mm/sec)
+#define DEFAULT_XYJERK                1.0    // (mm/sec)
 #define DEFAULT_ZJERK                 0.3     // (mm/sec) //0.4
 #define DEFAULT_EJERK                 10.0    // (mm/sec)
 
