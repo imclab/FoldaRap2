@@ -660,13 +660,13 @@
 #define X_DIR_PIN          21
 #define X_STOP_PIN         18
 
-#define Y_STEP_PIN         22
-#define Y_DIR_PIN          23
-#define Y_STOP_PIN         19
+#define Y_STEP_PIN         3 // 22
+#define Y_DIR_PIN          2 // 23
+#define Y_STOP_PIN         20 // 19
 
-#define Z_STEP_PIN         3
-#define Z_DIR_PIN          2
-#define Z_STOP_PIN         20
+#define Z_STEP_PIN         22 // 3
+#define Z_DIR_PIN          23 // 2
+#define Z_STOP_PIN         19 // 20
 
 #define E0_STEP_PIN         1
 #define E0_DIR_PIN          0
@@ -693,9 +693,10 @@
 #ifdef SANGUINOLOLU_V_1_2
 
 #define HEATER_BED_PIN     12 // (bed)
+
 #define X_ENABLE_PIN       14
-#define Y_ENABLE_PIN       14
-#define Z_ENABLE_PIN       26
+#define Y_ENABLE_PIN       26 // 14
+#define Z_ENABLE_PIN       -1 // 26
 #define E0_ENABLE_PIN       14
 
 #else
