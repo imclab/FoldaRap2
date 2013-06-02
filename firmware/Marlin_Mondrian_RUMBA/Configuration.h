@@ -9,7 +9,7 @@
 //Implementation of an idea by Prof Braino to inform user that any changes made
 //to this build by the user have been successfully uploaded into firmware.
 #define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
-#define STRING_CONFIG_H_AUTHOR "(Emmanuel, Mondrian)" //Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "(Emmanuel, Mondrian #000)" //Who made the changes.
 
 // SERIAL_PORT selects which serial port should be used for communication with the host.
 // This allows the connection of wireless adapters (for instance) to non-default port pins.
@@ -41,12 +41,13 @@
 // 82 = Brainwave (AT90USB646)
 // 9  = Gen3+
 // 70 = Megatronics
+// 80 = RUMBA
 // 90 = Alpha OMCA board
 // 91 = Final OMCA board
 // 301 = Rambo
 
 #ifndef MOTHERBOARD
-#define MOTHERBOARD 63
+#define MOTHERBOARD 80
 #endif
 
 
@@ -75,10 +76,10 @@
 // 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
 // 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan) (1k pullup)
 
-#define TEMP_SENSOR_0 1
-//#define TEMP_SENSOR_1 0
-//#define TEMP_SENSOR_2 0
-#define TEMP_SENSOR_BED 1
+#define TEMP_SENSOR_0 0
+#define TEMP_SENSOR_1 0
+//#define TEMP_SENSOR_2 1
+#define TEMP_SENSOR_BED 0
 
 // Actual temperature must be close to target for this long before M109 returns success
 #define TEMP_RESIDENCY_TIME 10	// (seconds)
@@ -97,7 +98,7 @@
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
 // You should use MINTEMP for thermistor short/failure protection.
 #define HEATER_0_MAXTEMP 275
-//#define HEATER_1_MAXTEMP 275
+#define HEATER_1_MAXTEMP 275
 //#define HEATER_2_MAXTEMP 275
 #define BED_MAXTEMP 150
 
@@ -109,7 +110,7 @@
 // PID settings:
 // Comment the following line to disable PID and enable bang-bang.
 #define PIDTEMP
-#define PID_MAX 255 // limits current to nozzle; 255=full current
+#define PID_MAX 128 // limits current to nozzle; 255=full current
 #ifdef PIDTEMP
   //#define PID_DEBUG // Sends debug data to the serial port. 
   //#define PID_OPENLOOP 1 // Puts PID in open loop. M104/M140 sets the output power from 0 to PID_MAX
@@ -167,17 +168,17 @@
 //can be software-disabled for whatever purposes by
 //#define PREVENT_DANGEROUS_EXTRUDE
 //if PREVENT_DANGEROUS_EXTRUDE is on, you can still disable (uncomment) very long bits of extrusion separately.
-#define PREVENT_LENGTHY_EXTRUDE
+//#define PREVENT_LENGTHY_EXTRUDE
 
-#define EXTRUDE_MINTEMP 150
-#define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
+//#define EXTRUDE_MINTEMP 170
+//#define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 //===========================================================================
 //=============================Mechanical Settings===========================
 //===========================================================================
 
 // Uncomment the following line to enable CoreXY kinematics
-#define COREXY
+//#define COREXY
 
 // corse Endstop Settings
 #define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
@@ -205,7 +206,7 @@
 const bool X_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
 const bool Y_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
 const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of the endstops. 
-//#define DISABLE_MAX_ENDSTOPS
+#define DISABLE_MAX_ENDSTOPS
 
 // For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1
 #define X_ENABLE_ON 0
@@ -219,12 +220,12 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 #define DISABLE_Z true
 #define DISABLE_E false // For all extruders
 
-#define INVERT_X_DIR false    // false for Mondrian
-#define INVERT_Y_DIR false     // true for Mondrian
-#define INVERT_Z_DIR false    // false for Mondrian
-#define INVERT_E0_DIR true   // false for direct drive
-#define INVERT_E1_DIR false   //
-#define INVERT_E2_DIR false   //
+#define INVERT_X_DIR false    // for Mondrian set to true
+#define INVERT_Y_DIR true    // for Mondrian set to false
+#define INVERT_Z_DIR false     // for Mondrian set to true
+#define INVERT_E0_DIR true   // for direct drive extruder set to true, for geared extruder set to false
+#define INVERT_E1_DIR true    // for direct drive extruder set to true, for geared extruder set to false
+#define INVERT_E2_DIR true   // for direct drive extruder set to true, for geared extruder set to false
 
 // ENDSTOP SETTINGS:
 // Sets direction of endstops when homing; 1=MAX, -1=MIN
@@ -261,17 +262,17 @@ const bool Z_ENDSTOPS_INVERTING = false; // set to true to invert the logic of t
 
 // default settings 
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,4000,140}  // FoldaRap direct drive Nema14, M5 leadscrew
-#define DEFAULT_MAX_FEEDRATE          {400, 400, 3, 50}    // (mm/sec)
-#define DEFAULT_MAX_ACCELERATION      {6000,6000,40,10200}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80, 80, 4000, 140}  // Mondrian 80 80 4000 140
+#define DEFAULT_MAX_FEEDRATE          {500, 500, 3, 50}    // (mm/sec)
+#define DEFAULT_MAX_ACCELERATION      {6000, 6000, 50, 10200}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves 
 #define DEFAULT_RETRACT_ACCELERATION  10200   // X, Y, Z and E max acceleration in mm/s^2 for r retracts
 
 // 
-#define DEFAULT_XYJERK                24.0    // (mm/sec)
-#define DEFAULT_ZJERK                 0.4     // (mm/sec)
-#define DEFAULT_EJERK                 10.0    // (mm/sec)
+#define DEFAULT_XYJERK                20.0    // (mm/sec) //20.0
+#define DEFAULT_ZJERK                 0.4     // (mm/sec) // 0.4
+#define DEFAULT_EJERK                 10.0    // (mm/sec) // 10.0
 
 //===========================================================================
 //=============================Additional Features===========================

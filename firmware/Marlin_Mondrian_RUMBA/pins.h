@@ -673,7 +673,7 @@
 
 #define LED_PIN            -1
 
-#define FAN_PIN            4
+#define FAN_PIN            -1 
 #if FAN_PIN == 12 || FAN_PIN ==13
 #define FAN_SOFT_PWM
 #endif
@@ -1331,6 +1331,97 @@
 #define SUICIDE_PIN        -1  //PIN that has to be turned on right after start, to keep power flowing.
 
 #endif
+
+/****************************************************************************************
+* RUMBA pin assignment
+*
+****************************************************************************************/
+#if MOTHERBOARD == 80
+#define KNOWN_BOARD 1
+
+#ifndef __AVR_ATmega2560__
+ #error Oops!  Make sure you have 'Arduino Mega' selected from the 'Tools -> Boards' menu.
+#endif
+
+#define X_STEP_PIN         17
+#define X_DIR_PIN          16
+#define X_ENABLE_PIN       48
+#define X_MIN_PIN          37
+#define X_MAX_PIN          36 
+
+#define Y_STEP_PIN         54 // 54
+#define Y_DIR_PIN          47 // 47
+#define Y_ENABLE_PIN       55 // 55
+#define Y_MIN_PIN          35 // 35
+#define Y_MAX_PIN          34 // 34
+
+#define Z_STEP_PIN         57 // 57
+#define Z_DIR_PIN          56 // 56
+#define Z_ENABLE_PIN       62 // 62
+#define Z_MIN_PIN          33 // 33
+#define Z_MAX_PIN          32 // 32
+
+//to use Z_DUAL_STEPPER_DRIVER in Marlin
+#define Z2_STEP_PIN        26 // 26
+#define Z2_DIR_PIN         25 // 25
+#define Z2_ENABLE_PIN      27 // 27
+
+#define E0_STEP_PIN        23
+#define E0_DIR_PIN         22
+#define E0_ENABLE_PIN      24
+
+#define E1_STEP_PIN        26 // 26
+#define E1_DIR_PIN         25 // 25
+#define E1_ENABLE_PIN      27 // 27
+
+#define E2_STEP_PIN        29
+#define E2_DIR_PIN         28
+#define E2_ENABLE_PIN      39
+
+#define LED_PIN            13
+
+#define FAN_PIN            7 
+//additional FAN1 PIN (e.g. useful for electronics fan or light on/off) on PIN 8
+
+#define PS_ON_PIN          45
+#define KILL_PIN           46
+
+#define HEATER_0_PIN       2    // EXTRUDER 1
+#define HEATER_1_PIN       3    // EXTRUDER 2
+#define HEATER_2_PIN       6    // EXTRUDER 3
+//optional FAN1 can be used as 4th heater output: #define HEATER_3_PIN       8    // EXTRUDER 4
+#define HEATER_BED_PIN     9    // BED
+
+#define TEMP_0_PIN         15   // ANALOG NUMBERING
+#define TEMP_1_PIN         14   // ANALOG NUMBERING
+#define TEMP_2_PIN         13   // ANALOG NUMBERING
+//optional for extruder 4 or chamber: #define TEMP_2_PIN         12   // ANALOG NUMBERING
+#define TEMP_BED_PIN       11   // ANALOG NUMBERING
+
+#define SDPOWER            -1
+#define SDSS               53
+#define SDCARDDETECT       49
+#define BEEPER             44
+#define LCD_PINS_RS        19 
+#define LCD_PINS_ENABLE    42
+#define LCD_PINS_D4        18
+#define LCD_PINS_D5        38 
+#define LCD_PINS_D6        41
+#define LCD_PINS_D7        40
+#define BTN_EN1            11
+#define BTN_EN2            12
+#define BTN_ENC            43
+//encoder rotation values
+#define BLEN_C 2
+#define BLEN_B 1
+#define BLEN_A 0
+#define encrot0 0
+#define encrot1 2
+#define encrot2 3
+#define encrot3 1
+
+#endif //MOTHERBOARD==80
+
 
 /****************************************************************************************
 * MegaTronics
